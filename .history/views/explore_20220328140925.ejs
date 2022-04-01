@@ -1,0 +1,13 @@
+<section class="explore">
+    <h2>Explore</h2>
+    <div>
+        <% data.forEach((item) => { %>
+        <article id="<%= item.objectNumber %>">
+                <h3><%= item.title %></h3>
+                <p><%= item.principalOrFirstMaker %></p>
+                <img src="<%= item.webImage.url.slice(0, -3)+"=s1000" %>" alt="<%= item.title %>">
+        </article>
+        <% }) %>
+        <form action=""><button>Load more</button></form>
+    </div> 
+</section>

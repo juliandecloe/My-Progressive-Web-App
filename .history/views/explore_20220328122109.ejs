@@ -1,0 +1,9 @@
+<section class="explore">
+    <h2>Explore</h2>
+    <article>
+        <%= data.forEach((item) => { %>
+            <h3><%= item.title %></h3>
+            <p><%= item.principalOrFirstMaker %></p>
+        <%= }) %>
+    </article>
+</section>
