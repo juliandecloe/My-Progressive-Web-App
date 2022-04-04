@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
-}) 
+})
 
 let rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=10&imgonly=true&p=';
 let page;
