@@ -57,9 +57,9 @@ app.get('/search', (req, res) => {
 
 app.get('/:page', (req, res) => {
   page = req.params.page;
-  const range = [...Array(page - 1 + 1).keys()].map(x => x + 1);
-  range.forEach(item => {
-    fetch(rijksAPI + item)
+  // const range = [...Array(page - 1 + 1).keys()].map(x => x + 1);
+  // range.forEach(item => {
+    fetch(rijksAPI + page)
     .then(response => response.json())
     .then(collection => {
       page++;
@@ -70,5 +70,5 @@ app.get('/:page', (req, res) => {
       });
     })
     .catch(err => res.send(err))
-  });
+  // });
 })
