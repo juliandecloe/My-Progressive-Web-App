@@ -12,3 +12,39 @@ Client-side is the side of the website that the user (client) has acces to. A cl
 
 ### Server-side
 Server-side is the side of the website that the user (client) can't control or has acces to. The down part is that you also can't controll what the user does and what the client browser offers. Server-side scripts process information on the web server when the user requests this information. The benefits of server-side is that it can load scripts before the web page is loaded. This gives you the opportunity to make login systems and cache some important files so that the page performance is good and the user can even use your website offline.
+
+## Starting a local host
+This is how I started with server-side rendering. Make sure to install `Node.js` on your device. After that make a project folder. Create for your project folder an `app.js` file and a `public` folder (this is the folder where you can put all your static files like your html, css and images).
+
+### Now follow these steps:
+1. Go to your command prompt and direct to your project folder
+2. $ npm install
+3. $ npm init
+4. $ npm install express
+5. fill out the information and press enter
+
+If you want to automatically reload your local host on save you can also do: $ npm install nodemon. In your package.json file you can set the scripts to:
+
+```
+"scripts": {
+    "start": "nodemon app.js"
+  },
+```
+
+### Using the `app.js` you can start your own local host
+
+```
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
+
+**That's it! Now you can acces your site with [http://localhost:3000](http://localhost:3000)**
