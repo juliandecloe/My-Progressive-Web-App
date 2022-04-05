@@ -72,4 +72,3 @@ app.get('/:page', (req, res) => {
     .catch(err => res.send(err))
   });
 })
-
