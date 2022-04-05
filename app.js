@@ -15,15 +15,13 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
 
-let rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=10&imgonly=true&p=';
+let rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=5&imgonly=true&p=';
 let page;
 
 app.get('/', (req, res) => {
   page = 1;
   fetch(rijksAPI + page)
-    .then(response => {
-      return response.json()
-    })
+    .then(response => response.json())
     .then(collection => {
       page++;
       res.render('index', {
@@ -36,13 +34,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=10&imgonly=true&q=' + req.query.q +'&p=';
+  rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=5&imgonly=true&q=' + req.query.q + '&p=';
   fetch(rijksAPI + page)
-    .then(response => {
-      return response.json()
-    })
+    .then(response => response.json())
     .then(collection => {
-      if(req.query.q == 0 || req.query.q == '') {
+      if (req.query.q == 0 || req.query.q == '') {
         res.render('index', {
           pageTitle: 'Rijksflix',
           data: collection.artObjects,
@@ -54,17 +50,19 @@ app.get('/search', (req, res) => {
           data: collection.artObjects,
           page: page,
         });
-      }  
+      }
     })
     .catch(err => res.send(err))
 })
 
 app.get('/:page', (req, res) => {
-  page = req.params.page
-  fetch(rijksAPI + page)
-    .then(async response => {
+  page = req.params.page;
+  const range = [...Array(page - 1 + 1).keys()].map(x => x + 1);
+  range.forEach(item => {
+    fetch(rijksAPI + item)
+    .then(response => response.json())
+    .then(collection => {
       page++;
-      const collection = await response.json();
       res.render('index', {
         pageTitle: 'Rijksflix',
         data: collection.artObjects,
@@ -72,7 +70,6 @@ app.get('/:page', (req, res) => {
       });
     })
     .catch(err => res.send(err))
+  });
 })
-
-
 
