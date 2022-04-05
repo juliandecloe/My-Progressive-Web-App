@@ -2,36 +2,13 @@
 
 # Rijksflix - Progressive Web App
 
-## Coming Soon!
+## Table of contents
+- [Client-side vs Server-side](#client-side-vs-server-side)
 
+## Client-side vs Server-side
 
+### Client-side
+Client-side is the side of the website that the user (client) has acces to. A client-side website normally contains static HTML, CSS and Javascript. The benefits of client-side scripts is that you have acces to the DOM. So you can fully controll almost everything the user does and use everything what the client browser offers.
 
-<!-- Here are some hints for your project! -->
-
-<!-- Start out with a title and a description -->
-
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
-
-<!-- Add a link to your live demo in Github Pages 🌐-->
-
-<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
-
-<!-- Maybe a table of contents here? 📚 -->
-
-<!-- ☝️ replace this description with a description of your own work -->
-
-<!-- How about a section that describes how to install this project? 🤓 -->
-
-<!-- ...but how does one use this project? What are its features 🤔 -->
-
-<!-- ...you should implement an explanation of client- server rendering choices 🍽 -->
-
-<!-- ...and an activity diagram including the Service Worker 📈 -->
-
-<!-- This would be a good place for a list of enhancements to optimize the critical render path implemented your app  -->
-
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- We all stand on the shoulders of giants, please link all the sources you used in to create this project. -->
-
-<!-- How about a license here? When in doubt use GNU GPL v3. 📜  -->
+### Server-side
+Server-side is the side of the website that the user (client) can't control or has acces to. The down part is that you also can't controll what the user does and what the client browser offers. Server-side scripts process information on the web server when the user requests this information. The benefits of server-side is that it can load scripts before the web page is loaded. This gives you the opportunity to make login systems and cache some important files so that the page performance is good and the user can even use your website offline.
