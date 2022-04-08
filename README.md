@@ -55,6 +55,7 @@ app.listen(port, () => {
 I use `ejs` frameworks to render html (and eventually some javascript).
 
 ### My ejs folder structure
+```
 .
 ├── ...
 ├── views
@@ -66,4 +67,7 @@ I use `ejs` frameworks to render html (and eventually some javascript).
 │   ├── search.ejs          *specific section for searching*
 │   └── explore.ejs         *specific section for the starterpage*
 └── ...
+```
+
+##
 
