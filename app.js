@@ -59,18 +59,20 @@ app.get('/search', (req, res) => {
 
 app.get('/:page', (req, res) => {
   page = req.params.page;
-  console.log(page)
   const range = [...Array(page - 1 + 1).keys()].map(x => x + 1);
   Promise.all(
     range.map(item => { 
       return fetch(rijksAPI + item).then(response => response.json())
     })
   )
-  .then(collection => {
+  .then(collections => {
+    const artObjects = collections.map(item => {
+      return item.artObjects;
+    }).flat();
     page++;
     res.render('index', {
       pageTitle: 'Rijksflix',
-      data: collection.artobjects,
+      data: artObjects,
       page: page,
     });
   })

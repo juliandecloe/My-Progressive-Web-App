@@ -1,8 +1,7 @@
 const cacheName = 'site-v1';
 const dynamicCacheName = 'site-dynamic-v1';
 const cacheAssets = [
-  '/style.css',
-  '/img'
+  '/style.css'
 ];
 
 self.addEventListener('install', event => {

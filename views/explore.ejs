@@ -8,13 +8,11 @@
             <img src="<%= item.webImage.url.slice(0, -3)+"=s600" %>" alt="<%= item.title %>">
         </article>
         <% }) %>
-        <form action="<%= page %>">
-            <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 66 66">
-                    <path id="Union_1" data-name="Union 1" d="M28.5,66V37.5H0v-9H28.5V0h9V28.5H66v9H37.5V66Z" fill="#acabab" />
-                </svg>
-                Laad meer!
-            </button>
-        </form>
+        <a href="/<%= page %>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 66 66">
+                <path id="Union_1" data-name="Union 1" d="M28.5,66V37.5H0v-9H28.5V0h9V28.5H66v9H37.5V66Z" fill="#acabab" />
+            </svg>
+            Laad meer!
+        </a>
     </div>
 </section>

@@ -112,6 +112,32 @@ app.get('/search', (req, res) => {
 })
 ```
 
+### Paging on horizontal slider server side
+This part is a bit tricky. I used `Promise.all` to first fetch all API's before rendering them.
+
+```
+app.get('/:page', (req, res) => {
+  page = req.params.page;
+  const range = [...Array(page - 1 + 1).keys()].map(x => x + 1);
+  Promise.all(
+    range.map(item => { 
+      return fetch(rijksAPI + item).then(response => response.json())
+    })
+  )
+  .then(collections => {
+    const artObjects = collections.map(item => {
+      return item.artObjects;
+    }).flat();
+    page++;
+    res.render('index', {
+      pageTitle: 'Rijksflix',
+      data: artObjects,
+      page: page,
+    });
+  })
+  .catch(err => res.send(err))
+})
+```
 
 ## Service Worker
 A service worker is a type of web worker. It's a JavaScript file that runs separately from the main browser thread, intercepting network requests and caching or getting resources from the caches.
