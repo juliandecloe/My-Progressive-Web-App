@@ -69,5 +69,58 @@ I use `ejs` frameworks to render html (and eventually some javascript).
 └── ...
 ```
 
-##
+## Service Worker
+A service worker is a type of web worker. It's a JavaScript file that runs separately from the main browser thread, intercepting network requests and caching or getting resources from the caches.
 
+### My Service Worker
+
+#### Install Event
+
+I used this event for adding files to the cache.
+```
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(cacheName).then(cache => {
+            cache.addAll(cacheAssets);
+        })
+    )
+})
+```
+
+#### Activate Event
+
+Used this event for removing old caches so a newer version can be added.
+```
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(keys
+                .filter(key => key !== cacheName && key !== dynamicCacheName)
+                .map(key => caches.delete(key))
+            )
+        })
+    );
+});
+```
+
+#### Fetch Event
+
+Used for sending the files from the cache to the client.
+```
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request).then(fetchRes => {
+                return caches.open(dynamicCacheName).then(cache => {
+                    cache.put(event.request.url, fetchRes.clone());
+                    return fetchRes;
+                })
+            });
+        })
+    );
+});
+```
+
+### Activity Diagram
+![Activity Diagram](proces/activity-diagram.png)
+ 
