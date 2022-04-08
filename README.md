@@ -69,6 +69,7 @@ I use `ejs` frameworks to render html (and eventually some javascript).
 └── ...
 ```
 
+
 ## Service Worker
 A service worker is a type of web worker. It's a JavaScript file that runs separately from the main browser thread, intercepting network requests and caching or getting resources from the caches.
 
@@ -124,3 +125,6 @@ self.addEventListener('fetch', event => {
 ### Activity Diagram
 ![Activity Diagram](proces/activity-diagram.png)
  
+## Performance
+
+![Performance at 99%](proces/performance.png)
