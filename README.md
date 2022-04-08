@@ -69,6 +69,49 @@ I use `ejs` frameworks to render html (and eventually some javascript).
 └── ...
 ```
 
+### Loading explore page
+```
+app.get('/', (req, res) => {
+  page = 1;
+  fetch(rijksAPI + page)
+    .then(response => response.json())
+    .then(collection => {
+      page++;
+      res.render('index', {
+        pageTitle: 'Rijksflix',
+        data: collection.artObjects,
+        page: page,
+      });
+    })
+    .catch(err => res.send(err))
+})
+```
+
+### Searching server side
+```
+app.get('/search', (req, res) => {
+  rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=5&imgonly=true&q=' + req.query.q + '&p=';
+  fetch(rijksAPI + page)
+    .then(response => response.json())
+    .then(collection => {
+      if (req.query.q == 0 || req.query.q == '') {
+        res.render('index', {
+          pageTitle: 'Rijksflix',
+          data: collection.artObjects,
+          page: page,
+        });
+      } else {
+        res.render('search', {
+          pageTitle: 'Rijksflix',
+          data: collection.artObjects,
+          page: page,
+        });
+      }
+    })
+    .catch(err => res.send(err))
+})
+```
+
 
 ## Service Worker
 A service worker is a type of web worker. It's a JavaScript file that runs separately from the main browser thread, intercepting network requests and caching or getting resources from the caches.
