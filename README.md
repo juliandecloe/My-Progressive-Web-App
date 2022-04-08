@@ -4,6 +4,8 @@
 
 ## Table of contents
 - [Client-side vs Server-side](#client-side-vs-server-side)
+- [Starting a local host](#starting-a-local-host)
+- [Server-side rendering](#server-side-rendering)
 
 ## Client-side vs Server-side
 
@@ -48,3 +50,20 @@ app.listen(port, () => {
 ```
 
 **That's it! Now you can acces your site with [http://localhost:3000](http://localhost:3000)**
+
+## Server-side rendering
+I use `ejs` frameworks to render html (and eventually some javascript).
+
+### My ejs folder structure
+.
+├── ...
+├── views
+│   ├── partials            *folder with reusable ejs files*
+│   │   ├── head.ejs        *head of html*
+│   │   ├── foot.ejs        *ending of html*
+│   │   └── header.ejs      *the header of the page*
+│   ├── index.ejs           *general ejs file*
+│   ├── search.ejs          *specific section for searching*
+│   └── explore.ejs         *specific section for the starterpage*
+└── ...
+
