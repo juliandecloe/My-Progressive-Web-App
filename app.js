@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
 
-let rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=5&imgonly=true&p=';
+let rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=20&imgonly=true&p=';
 let page;
 
 app.get('/', (req, res) => {
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=5&imgonly=true&q=' + req.query.q + '&p=';
+  rijksAPI = 'https://www.rijksmuseum.nl/api/nl/collection?key=C21U7KQu&ps=20&imgonly=true&q=' + req.query.q + '&p=';
   fetch(rijksAPI + page)
     .then(response => response.json())
     .then(collection => {

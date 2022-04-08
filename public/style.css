@@ -159,7 +159,20 @@ article h3 {
 
 .explore article:last-child {
 	padding-right: 2rem;
+	display: grid;
+	place-items: center;
 }
+
+.explore div a {
+	text-decoration: none;
+	display: grid;
+	place-items: center;
+	color: white;
+	height: 5rem;
+	width: 5rem;
+	background-color: #343537;
+}
+
 
 .search h2 {
 	width: 100%;
@@ -268,3 +281,4 @@ article h3 {
 .hide {
 	display: none;
 }
+

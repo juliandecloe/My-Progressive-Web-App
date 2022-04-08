@@ -194,6 +194,17 @@ self.addEventListener('fetch', event => {
 ### Activity Diagram
 ![Activity Diagram](proces/activity-diagram.png)
  
-## Performance
+## Enhancements for the critical rendering path
+
+### Lighthouse
+I started to generate a Lighthouse report to check the loading time. Here are a few points for improvement.
+
+Image size I wanted to show large images on the homepage so I didn't resize them first. Because I wanted to show 25 images on the homepage, this was not really useful. I chose to shrink the images in the API with `.slice()` and `s=600` pixels.
+
+I have a header image that ran quite large. I reduced it with [TinyPNG](https://tinypng.com/) and then reduced the resolution via Photoshop. This lowered the Largest Contentful Paint by a good 4 seconds.
+
+### Compression package
+At NPM you can download a Compression package. This packet ensures that the response body of the server is compressed so that it loads faster from the server to the client, and the user does not have to wait as long. I implemented this by requiring the package and app.use(compression).
+
 
 ![Performance at 99%](proces/performance.png)
